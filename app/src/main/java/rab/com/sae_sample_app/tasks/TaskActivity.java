@@ -56,8 +56,8 @@ public class TaskActivity extends AppCompatActivity implements TasksContract.Vie
             @Override
             public void onDeleteTaskClick(final Task task) {
                 new AlertDialog.Builder(TaskActivity.this)
-                        .setTitle("Delete")
-                        .setMessage("Do you really want to delete this task?")
+                        .setTitle(R.string.dialog_deleteTask_title)
+                        .setMessage(R.string.dialog_deleteTask_message)
                         .setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 mPresenter.deleteTask(task);
