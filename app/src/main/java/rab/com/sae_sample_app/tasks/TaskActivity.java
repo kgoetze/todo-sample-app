@@ -1,7 +1,9 @@
 package rab.com.sae_sample_app.tasks;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -53,6 +55,16 @@ public class TaskActivity extends AppCompatActivity implements TasksContract.Vie
 
             @Override
             public void onDeleteTaskClick(final Task task) {
+                new AlertDialog.Builder(TaskActivity.this)
+                        .setTitle(R.string.dialog_deleteTask_title)
+                        .setMessage(R.string.dialog_deleteTask_message)
+                        .setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                mPresenter.deleteTask(task);
+                            }
+                        })
+                        .setNegativeButton(R.string.button_cancel, null)
+                        .show();
             }
         });
         mTasksListView.setAdapter(mListAdapter);
